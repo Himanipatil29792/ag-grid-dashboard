@@ -19,4 +19,5 @@ I built a React AG Grid Dashboard with Vite and Tailwind CSS. It features a sear
 ## 🛠️ Installation
 
 npm install
+
 npm run dev
