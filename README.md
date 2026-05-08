@@ -1,16 +1,22 @@
-# React + Vite
+# AG Grid Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I built a React AG Grid Dashboard with Vite and Tailwind CSS. It features a searchable, sortable, and paginated data table with a custom-styled header, active/inactive status indicators, and a responsive layout. I used AG Grid Community Edition with `quickFilterText` for live search, `defaultColDef` with `flex: 1` for full-width columns, and Tailwind utility classes for all UI styling.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
+- React
+- Vite
+- Tailwind CSS
+- AG Grid Community Edition
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
+- 🔍 Live search with clear button
+- 📊 Sortable and filterable columns
+- 📄 Pagination
+- 🎨 Custom styled header
+- ✅ Active / Inactive status indicators
+- 📱 Responsive layout
 
-## React Compiler
+## 🛠️ Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+npm install
+npm run dev
