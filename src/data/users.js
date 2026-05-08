@@ -44,7 +44,7 @@ const users = [
     name: "Michael Lee",
     email: "michael@example.com",
     country: "India",
-    age: 25,
+    age: 28,
     status: "Active",
   },
   {
@@ -60,7 +60,7 @@ const users = [
     name: "Michael Lee",
     email: "michael@example.com",
     country: "India",
-    age: 25,
+    age: 29,
     status: "Active",
   },
   {
