@@ -8,7 +8,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
  import "./Dashboard.css";   
 
-import users from "../data/users";
+import employees from "../data/employees";
 
 const Dashboard = () => {
   const [searchText, setSearchText] = useState("");
@@ -16,37 +16,77 @@ const Dashboard = () => {
   const [defaultColDef] = useState({
     flex: 1,
     minWidth: 100,
+    autoHeight: true,
     cellStyle: {
       display: "flex",
       alignItems: "center",
     },
   });
 
-  const [columnDefs] = useState([
-    { field: "id", sortable: true, filter: true },
-    { field: "name", sortable: true, filter: true },
-    { field: "email", sortable: true, filter: true },
-    { field: "country", sortable: true, filter: true },
-    { field: "age", sortable: true, filter: true },
-    {
-      field: "status",
-      sortable: true,
-      filter: true,
-      cellStyle: (params) => ({
-        display: "flex",
-        alignItems: "center",
-        color: params.value === "Active" ? "green" : "red",
-        fontWeight: "bold",
-      }),
-    },
-  ]);
+ const [columnDefs] = useState([
+  { field: "id", sortable: true, filter: true, maxWidth: 70},
+   { field: "firstName", sortable: true, filter: true },
+    { field: "lastName", sortable: true, filter: true },
+  { field: "email", sortable: true, filter: true },
+  { field: "department", sortable: true, filter: true },
+  { field: "position", sortable: true, filter: true },
+  {
+    field: "salary", sortable: true, filter: true,
+  },
+  { field: "hireDate", headerName: "Hire Date", sortable: true, filter: true },
+  { field: "age", sortable: true, filter: true , maxWidth: 80 },
+  { field: "location", sortable: true, filter: true },
+  {
+    field: "performanceRating",
+    headerName: "Rating",
+    sortable: true,
+    filter: true,
+  },
+  {
+    field: "projectsCompleted",
+    headerName: "Projects",
+    sortable: true,
+    filter: true,
+  },
+  {
+    field: "skills",
+    sortable: false,
+    filter: true,
+    valueFormatter: (p) => p.value.join(", "),
+  },
+  { field: "manager", sortable: true, filter: true },
+  {
+    field: "isActive",
+    headerName: "Status",
+    sortable: true,
+    filter: true,
+    //valueFormatter: (p) => (p.value ? "Active" : "Inactive"),
+    // cellStyle: (params) => ({
+    //   display: "flex",
+    //   alignItems: "center",
+    //   color: params.value ? "green" : "red",
+    //   fontWeight: "bold",
+    // }),
+     cellRenderer: (params) => (
+        <span
+          style={{
+            color: params.value ? "green" : "red",
+            fontWeight: "bold",
+          }}
+        >
+          {params.value ? "Active" : "Inactive"}
+        </span>
+      ),
+  },
+]);
+
 
   return (
     <div className="p-6 bg-gray-100 min-h-[89vh]">
       <div className="relative inline-block w-full max-w-xs mb-5">
         <input
           type="text"
-          placeholder="Search users..."
+          placeholder="Search employees..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           className="w-full bg-white px-3 py-3 pr-8 text-sm border border-gray-300 rounded-xl outline-none focus:border-blue-500 transition-colors"
@@ -60,9 +100,9 @@ const Dashboard = () => {
           </button>
         )}
       </div>
-      <div className="ag-theme-quartz h-[455px] w-full rounded-xl overflow-hidden shadow-md">
+      <div className="ag-theme-quartz h-[470px] w-full rounded-xl overflow-hidden shadow-md">
         <AgGridReact
-          rowData={users}
+          rowData={employees}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           pagination={true}
@@ -70,6 +110,8 @@ const Dashboard = () => {
           quickFilterText={searchText}
           animateRows={true}
           rowHeight={40}
+          autoSizeStrategy={{ type: "fitCellContents" }} 
+          autoHeight={true}
         />
       </div>
     </div>
